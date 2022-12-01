@@ -14,6 +14,6 @@ public class Elephant extends Actor
      */
     public void act()
     {
-        move(1);
+        move(3);
     }
 }
