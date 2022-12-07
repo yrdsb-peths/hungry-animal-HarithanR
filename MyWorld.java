@@ -21,6 +21,7 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
         
+        // Adds the player character, being the elephant, to our game.
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
         
@@ -32,12 +33,20 @@ public class MyWorld extends World
     
     public void gameOver()
     {
+        /**
+         * Creates a lose condition for the player. In other words, once the
+         * apple falls out of the player's reach, text saying "Game Over"
+         * appears on the screen.
+         */
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
     }
     
     public void increaseScore()
     {
+        /**
+         * Keeps track of how many apples the player collected.
+         */
         score++;
         scoreLabel.setValue(score);
         
@@ -49,6 +58,11 @@ public class MyWorld extends World
     
     public void createApple()
     {
+        /**
+         * Creates an apple for the player to catch. The apple can appear
+         * anywhere randomly on the top of the map. Once it has been
+         * caught, another spawns in.
+         */
         Apple apple = new Apple();
         apple.setSpeed(level);
         int x = Greenfoot.getRandomNumber(600);

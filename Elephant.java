@@ -8,8 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor
 {
-    
+    /**
+     * Allows the elephant to make noise. This noise triggers everytime the 
+     * player catches an apple.
+     */
     GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    
+    /**
+     * Allows the elephant to sway their trunk back and forth in an animation.
+     */
     GreenfootImage[] idleRight = new GreenfootImage[8];
     GreenfootImage[] idleLeft = new GreenfootImage[8];
     
@@ -35,7 +42,10 @@ public class Elephant extends Actor
     }
     
     
-    
+    /**
+     * Sets the speed for the elephant's idle animation. In other words, it
+     * makes sure the animation for it is not going unnaturally fast or slow.
+     */
     int imageIndex = 0;
     public void animateElephant()
     {
@@ -59,6 +69,10 @@ public class Elephant extends Actor
     }
     public void act()
     {
+        /**
+         * Allows the character to move left or right depending on the keys
+         * they press.
+         */
         if(Greenfoot.isKeyDown("left"))
         {
             move(-5);
