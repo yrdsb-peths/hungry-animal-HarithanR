@@ -20,8 +20,14 @@ public class Elephant extends Actor
     GreenfootImage[] idleRight = new GreenfootImage[8];
     GreenfootImage[] idleLeft = new GreenfootImage[8];
     
+    public int speedLeft = -3;
+    public int speedRight = 3;
+    
     String facing = "right";   
     SimpleTimer animationTimer = new SimpleTimer();
+    
+    boolean left = Greenfoot.isKeyDown("left");
+    boolean right = Greenfoot.isKeyDown("right");
     public Elephant()
     {
         for(int i = 0; i < idleRight.length; i++)
@@ -67,7 +73,13 @@ public class Elephant extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;            
         }
     }
-    public void act()
+    public void setElephantSpeed(int elespeedLeft, int elespeedRight)
+    {
+        speedLeft = elespeedLeft;
+        speedRight = elespeedRight;
+     }
+  
+       public void act()
     {
         /**
          * Allows the character to move left or right depending on the keys
@@ -75,13 +87,13 @@ public class Elephant extends Actor
          */
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-5);
+            move(speedLeft);
             facing = "left";
         }
         
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(5);
+            move(speedRight);
             facing = "right";
         }
         

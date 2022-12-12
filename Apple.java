@@ -15,6 +15,8 @@ public class Apple extends Actor
     // The speed of which the apple falls to the ground.
     private int speed = 1;
     
+    // The type of apple that is chosen to fall. 
+    
     public void act()
     {
         /**
@@ -42,4 +44,5 @@ public class Apple extends Actor
     {
         speed = spd;
     }
+    
 }

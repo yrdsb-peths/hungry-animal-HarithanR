@@ -11,6 +11,10 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLabel;
     int level = 1;
+    int espeedLeft = -3;
+    int espeedRight = 3;
+    public int eleSpeed = 1;
+    Label speedLabel;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -24,12 +28,24 @@ public class MyWorld extends World
         // Adds the player character, being the elephant, to our game.
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
+                
         
-        scoreLabel = new Label(0, 80);
-        addObject(scoreLabel, 50, 50); 
+        Label titleScoreLabel = new Label("Score:", 30);
+        addObject(titleScoreLabel, 50, 50);
+        
+        scoreLabel = new Label(0, 40);
+        addObject(scoreLabel, 100, 50); 
+        
+        Label titleSpeedLabel = new Label("Speed:", 30);
+        addObject(titleSpeedLabel, 50, 80);
+        
+        speedLabel = new Label(0, 40);
+        addObject(speedLabel, 100, 80);
+        speedLabel.setValue(eleSpeed); 
         
         createApple();
-    }
+        elephant.setElephantSpeed(espeedLeft,espeedRight);
+        }
     
     public void gameOver()
     {
@@ -54,8 +70,19 @@ public class MyWorld extends World
         {
             level += 1;
         }
+        
+         
+        if(score % 5 == 0)
+        {
+            espeedLeft -= 3;
+            espeedRight += 3;
+            eleSpeed++;
+            speedLabel.setValue(eleSpeed); 
+        }
+
     }
     
+       
     public void createApple()
     {
         /**
@@ -68,7 +95,6 @@ public class MyWorld extends World
         int x = Greenfoot.getRandomNumber(600);
         int y = 0;
         addObject(apple, x, y);
-
-        
+       
     }
 }
