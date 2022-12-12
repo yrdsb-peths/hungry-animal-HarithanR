@@ -50,25 +50,37 @@ public class TitleScreen extends World
         Elephant elephant = new Elephant();
         addObject(elephant,310,114);
         elephant.setLocation(519,124);
-        
+
         /**
          * Adds text telling the player what they should do to properly
          * start playing the game in the title screen.
          */
-        
+
         Label label = new Label("Press <space> to Start", 40);
         addObject(label,258,333);
         label.setLocation(284,335);
-        
+
         /**
          * Adds text giving the player instructions on how to play the game
          * in the title screen.
          */
-        
+
         Label label2 = new Label("Use \u2190 and \u2192 to Move", 40);
         addObject(label2,282,287);
         label2.setLocation(284,385);
 
+        Label label3 = new Label("Avoid", 40);
+        addObject(label3, 282, 287);
+        label3.setLocation(284,295);
+
+        Label label4 = new Label("Collect", 40);
+        addObject(label4, 282, 287);
+        label4.setLocation(284,255);        
+
         elephant.setLocation(269,115);
+        Apple apple = new Apple();
+        addObject(apple,372,249);
+        slowApple slowApple = new slowApple();
+        addObject(slowApple,370,299);
     }
 }
