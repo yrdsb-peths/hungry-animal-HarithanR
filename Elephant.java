@@ -23,6 +23,8 @@ public class Elephant extends Actor
     public int speedLeft = -3;
     public int speedRight = 3;
     
+    private int espeed = 0;
+    
     String facing = "right";   
     SimpleTimer animationTimer = new SimpleTimer();
     
@@ -73,10 +75,11 @@ public class Elephant extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;            
         }
     }
-    public void setElephantSpeed(int elespeedLeft, int elespeedRight)
+    public void setElephantSpeed(int speed)
     {
-        speedLeft = elespeedLeft;
-        speedRight = elespeedRight;
+        // speedLeft = -speed;
+        // speedRight = speed;
+        espeed = speed;
      }
   
        public void act()
@@ -87,13 +90,13 @@ public class Elephant extends Actor
          */
         if(Greenfoot.isKeyDown("left"))
         {
-            move(speedLeft);
+            move(speedLeft - espeed);
             facing = "left";
         }
         
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(speedRight);
+            move(speedRight + espeed);
             facing = "right";
         }
         

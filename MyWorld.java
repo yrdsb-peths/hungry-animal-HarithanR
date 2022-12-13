@@ -11,8 +11,9 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLabel;
     int level = 1;
-    int espeedLeft = -3;
-    int espeedRight = 3;
+    int spd = 3;
+    int speedL = -spd;
+    int speedR = spd;
     public int eleSpeed = 1;
     Label speedLabel;
     /**
@@ -26,27 +27,26 @@ public class MyWorld extends World
         super(600, 400, 1, false);
         
         // Adds the player character, being the elephant, to our game.
-        Elephant elephant = new Elephant();
-        addObject(elephant, 300, 300);
-                
-        
+         Elephant elephant = new Elephant();
+         addObject(elephant, 300, 300);
+               
+              
         Label titleScoreLabel = new Label("Score:", 30);
         addObject(titleScoreLabel, 50, 50);
-        
+
         scoreLabel = new Label(0, 40);
         addObject(scoreLabel, 100, 50); 
-        
+
         Label titleSpeedLabel = new Label("Speed:", 30);
         addObject(titleSpeedLabel, 50, 80);
-        
+
         speedLabel = new Label(0, 40);
         addObject(speedLabel, 100, 80);
         speedLabel.setValue(eleSpeed); 
-        
+
         createApple();
-        elephant.setElephantSpeed(espeedLeft,espeedRight);
-        }
-    
+    }
+
     public void gameOver()
     {
         /**
@@ -57,32 +57,26 @@ public class MyWorld extends World
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
     }
-    
+
     public void increaseScore()
     {
         /**
          * Keeps track of how many apples the player collected.
          */
         score++;
-        scoreLabel.setValue(score);
-        
+        scoreLabel.setValue(score);   
+
         if(score % 5 == 0)
         {
-            level += 1;
-        }
-        
-         
-        if(score % 5 == 0)
-        {
-            espeedLeft -= 3;
-            espeedRight += 3;
+            level++;
+            spd += 3;
             eleSpeed++;
-            speedLabel.setValue(eleSpeed); 
+            speedLabel.setValue(eleSpeed);
+            elephantStat();
         }
 
     }
-    
-       
+
     public void createApple()
     {
         /**
@@ -95,6 +89,13 @@ public class MyWorld extends World
         int x = Greenfoot.getRandomNumber(600);
         int y = 0;
         addObject(apple, x, y);
-       
+
+    }
+    
+    public void elephantStat()
+    {
+        Elephant elephant = new Elephant();
+        addObject(elephant, 300, 300);
+        elephant.setElephantSpeed(spd);        
     }
 }
