@@ -16,6 +16,7 @@ public class MyWorld extends World
     int speedR = spd;
     public int eleSpeed = 1;
     Label speedLabel;
+    public Elephant elephant;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -27,9 +28,9 @@ public class MyWorld extends World
         super(600, 400, 1, false);
         
         // Adds the player character, being the elephant, to our game.
-         Elephant elephant = new Elephant();
-         addObject(elephant, 300, 300);
-               
+        elephant = new Elephant();
+        addObject(elephant, 300, 300);
+              
               
         Label titleScoreLabel = new Label("Score:", 30);
         addObject(titleScoreLabel, 50, 50);
@@ -69,10 +70,10 @@ public class MyWorld extends World
         if(score % 5 == 0)
         {
             level++;
-            spd += 3;
+            spd += 1;
             eleSpeed++;
             speedLabel.setValue(eleSpeed);
-            elephantStat();
+            elephant.increaseSpeed();
         }
 
     }
@@ -92,10 +93,9 @@ public class MyWorld extends World
 
     }
     
-    public void elephantStat()
+    public void elephantStat(Elephant elephant)
     {
-        Elephant elephant = new Elephant();
-        addObject(elephant, 300, 300);
-        elephant.setElephantSpeed(spd);        
+      elephant.setElephantSpeed(spd);  
+
     }
 }

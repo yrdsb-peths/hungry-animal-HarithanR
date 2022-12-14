@@ -77,11 +77,16 @@ public class Elephant extends Actor
     }
     public void setElephantSpeed(int speed)
     {
-        // speedLeft = -speed;
-        // speedRight = speed;
-        espeed = speed;
+        speedLeft = -speed;
+        speedRight = speed;
+        //espeed = speed;
      }
-  
+     public void increaseSpeed()
+    {
+         speedLeft -= 3;
+         speedRight += 3;
+        //espeed = speed;
+     }
        public void act()
     {
         /**
@@ -90,13 +95,13 @@ public class Elephant extends Actor
          */
         if(Greenfoot.isKeyDown("left"))
         {
-            move(speedLeft - espeed);
+            move(speedLeft);
             facing = "left";
         }
         
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(speedRight + espeed);
+            move(speedRight);
             facing = "right";
         }
         
@@ -117,4 +122,5 @@ public class Elephant extends Actor
             elephantSound.play();
         }
     }
+
 }
